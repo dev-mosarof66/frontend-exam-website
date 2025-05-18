@@ -14,7 +14,7 @@ function Hero() {
             </div>
             <div className='flex items-center gap-4'>
                 <button className='btn btn-accent text-black font-bold'>Request a Demo</button>
-                <button className='btn btn-outline btn-secondary text-white font-bold'>Pricing</button>
+                <button className='btn btn-outline btn-accent text-white hover:text-black font-bold transition duration-300 delay-75'>Pricing</button>
             </div>
         </div>
     )

@@ -1,0 +1,13 @@
+.bg{
+    background: url('../assets/100.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: red;
+    width: 100%;
+    height: 250px;
+}
+
+.no-scroll{
+    scrollbar-width: none;
+}

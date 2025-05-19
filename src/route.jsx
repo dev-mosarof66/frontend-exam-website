@@ -12,6 +12,7 @@ const Publish = lazy(() => import('./pages/Teacher/Publish'));
 const Report = lazy(() => import('./pages/Teacher/Report'));
 const Settings = lazy(() => import('./pages/Teacher/Settings'));
 const History = lazy(() => import('./pages/Teacher/History'));
+const Notifications = lazy(() => import('./pages/Teacher/Notifications'));
 function Router() {
     return (
         <BrowserRouter>
@@ -26,6 +27,7 @@ function Router() {
                         <Route path='/teacher/dashboard/report' element={<Report />} />
                         <Route path='/teacher/dashboard/settings' element={<Settings />} />
                         <Route path='/teacher/dashboard/history' element={<History />} />
+                        <Route path='/teacher/dashboard/notifications' element={<Notifications />} />
 
                     </Route>
                     <Route path='/student/dashboard/:id' element={<StudentDashboard />} />

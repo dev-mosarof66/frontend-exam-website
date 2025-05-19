@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useState} from 'react'
 import { FaUser, FaPenFancy } from 'react-icons/fa'
 import { MdSpaceDashboard, MdHistory, MdOutlineLogout, MdLogout } from "react-icons/md";
 import { IoBookmarks } from "react-icons/io5";
@@ -97,16 +97,21 @@ const Data = [
 
 export const MiniTeacherSidebar = () => {
     const navigate = useNavigate()
+    const [selected, setSelected] = useState(1);
     return (
         <div className='flex sm:hidden w-full list-none items-center justify-between px-6 my-3'>
             {
                 data.map((item, index) => (
-                    <NavLink to={item.path} className={((isActive) => (`flex items-center gap-2 hover:bg-gray-500/50 cursor-pointer duration-300 delay-75 p-2 active:bg-gray-500/10 transition tooltip tooltip-top tooltip-accent`))} key={index} data-tip={item.name} >
+                    <li onClick={() => {
+                        setSelected(item.id)
+                        navigate(item.path)
+                    }}
+                        className={`flex items-center gap-2  cursor-pointer duration-300 delay-75 p-2  ${selected === item.id ? 'bg-primary' : 'active:bg-gray-500/50 hover:bg-gray-500/50'} transition tooltip tooltip-top tooltip-accent`} key={index} data-tip={item.name} >
                         <div className='text-2xl'>
                             {item.icon}
                         </div>
                         <span className='hidden lg:block'>{item.name}</span>
-                    </NavLink>
+                    </li>
                 ))
             }
         </div>
@@ -114,7 +119,7 @@ export const MiniTeacherSidebar = () => {
 }
 export const LargeTeacherSidebar = ({ userData = {} }) => {
     const navigate = useNavigate()
-    const [selected, setSelected] = React.useState(1);
+    const [selected, setSelected] = useState(1);
     return (
         <div>
             <div className='hidden sm:flex flex-col w-fit lg:w-60 h-[100vh] list-none items-start justify-between p-2 py-6 bg-blue-950'>

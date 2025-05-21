@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { IoNotifications } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = 'Dashboard | Bee Master';
+  })
   return (
     <div className='w-[90%] mx-auto my-10 h-full'>
       <div className='flex justify-end items-center gap-4'>

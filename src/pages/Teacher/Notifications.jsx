@@ -29,9 +29,10 @@ function Notifications() {
   }
   useEffect(() => {
     console.log(data)
+    document.title = `${`100+`}Notifications | Bee Master `;
   }, [data])
   return (
-    <div className='w-[100%] sm:w-[80%] mx-auto flex flex-col items-center justify-center space-y-6'>
+    <div className='w-[90%] sm:w-[80%] mx-auto flex flex-col items-center justify-center space-y-6'>
       <h1 className='text-2xl font-bold text-gray-500'>Notifications</h1>
       <div className='w-full pl-2  grid grid-cols-1 md:grid-cols-2 gap-8'>
         {

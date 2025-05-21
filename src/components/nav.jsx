@@ -3,7 +3,7 @@ import Logo from '../assets/LOGO.png'
 import { MdMenu } from "react-icons/md";
 
 
-function Navbar() {
+function Navbar({ setGetStarted }) {
     return (
         <header>
             <nav className="flex justify-between items-center p-4">
@@ -19,14 +19,14 @@ function Navbar() {
                     <li className='font-bold hover:text-red-600 active:text-red-600 transition duration-300 delay-75 cursor-pointer'>Blog</li>
                 </ul>
                 <ul>
-                    <button className='btn btn-secondary text-black font-bold'>Get Started</button>
+                    <button onClick={() => setGetStarted(true)} className='btn btn-secondary text-black font-bold'>Get Started</button>
                 </ul>
             </nav>
         </header>
     )
 }
 
-export const MiniNavbar = ({ setOpen, open }) => {
+export const MiniNavbar = ({ setOpen, open, setGetStarted }) => {
     return (
         <header>
             <nav className="flex justify-between items-center  px-4 pt-2 fixed top-0 left-0 right-0 z-30">
@@ -39,7 +39,7 @@ export const MiniNavbar = ({ setOpen, open }) => {
                     </li>
                 </ul>
                 <ul>
-                    <button className='btn btn-secondary btn-sm text-black font-bold'>Get Started</button>
+                    <button onClick={() => setGetStarted(true)} className='btn btn-secondary btn-sm text-black font-bold'>Get Started</button>
                 </ul>
             </nav>
             <div className='fixed top-14 left-0 right-0 z-20 transition-transform duration-300 delay-75 ease-in-out'>

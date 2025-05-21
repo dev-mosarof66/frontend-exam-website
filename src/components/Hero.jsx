@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from '../assets/Icon01.png'
+import Popup from '../components/Popup'
 
 function Hero() {
     return (

@@ -2,7 +2,9 @@ import React from 'react'
 
 function Report() {
   return (
-    <div>Report</div>
+    <div className='w-full h-full flex justify-center items-center'>
+      <h1>Under Development</h1>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ function TeacherDashboard() {
                     <div >
                         <LargeTeacherSidebar />
                     </div>
-                    <div className='w-full h-[98vh] py-6 overflow-y-scroll no-scroll'>
+                    <div className='w-full h-screen  overflow-y-scroll no-scroll'>
                         <Outlet />
                     </div>
 

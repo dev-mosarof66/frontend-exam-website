@@ -7,8 +7,8 @@ function CreateExam() {
   const blankQuestion = (id) => ({
     id,
     title: "",
-    options: ["A", "B", "C", "D"],
-    answer: "D"
+    options: ["", "", "", ""],
+    answer: ""
   });
 
   const [Question, setQuestion] = useState([blankQuestion(1)]);

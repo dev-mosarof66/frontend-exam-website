@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const Home = lazy(() => import('./pages/public/Home'));
 const NotFound = lazy(() => import('./pages/public/404'));
 import Loader from './components/Loader'
-const StudentDashboard = lazy(() => import('./pages/public/StudentDashboard'));
 const TeacherDashboard = lazy(() => import('./pages/Teacher/TeacherDashboard'));
 const Dashboard = lazy(() => import('./pages/Teacher/Dashboard'));
 const Profile = lazy(() => import('./pages/Teacher/Profile'));
@@ -16,6 +15,17 @@ const History = lazy(() => import('./pages/Teacher/History'));
 const Notifications = lazy(() => import('./pages/Teacher/Notifications'));
 const TeacherLogin = lazy(() => import('./pages/Teacher/Login'));
 const TeacherSignup = lazy(() => import('./pages/Teacher/Signup'));
+
+//student
+
+const StudentHome = lazy(() => import('./pages/Student/Home'));
+const StudentDashboard = lazy(() => import('./pages/Student/Dashboard'));
+const StudentLogin = lazy(() => import('./pages/Student/Login'));
+const StudentSignup = lazy(() => import('./pages/Student/Signup'));
+const StudentProfile = lazy(() => import('./pages/Student/Profile'));
+const StudentReport = lazy(() => import('./pages/Student/Report'));
+const ParticipateExam = lazy(() => import('./pages/Student/Exam'));
+
 function Router() {
     return (
         <BrowserRouter>
@@ -36,7 +46,15 @@ function Router() {
                         <Route path='/teacher/dashboard/notifications' element={<Notifications />} />
 
                     </Route>
-                    <Route path='/student/dashboard/:id' element={<StudentDashboard />} />
+                    <Route path='/student/login' element={<StudentLogin />} />
+                    <Route path='/student/signup' element={<StudentSignup />} />
+                    <Route path='/student/dashboard' element={<StudentHome />} >
+                        <Route index element={<StudentDashboard />} />
+                        <Route path='/student/dashboard/profile' element={<StudentProfile />} />
+                        <Route path='/student/dashboard/report' element={<StudentReport />} />
+                        <Route path='/student/dashboard/exam' element={<ParticipateExam />} />
+
+                    </Route>
                 </Routes>
             </Suspense>
         </BrowserRouter>

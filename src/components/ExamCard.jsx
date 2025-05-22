@@ -29,8 +29,8 @@ function ExamCard({ Questions, setQuestions, handleAddQuestion, handleRemoveQues
 
             {/* Title */}
             <div className='w-[90%] flex flex-col space-y-3'>
+                <p className='font-semibold text-lg'>{index + 1}. </p>
                 <div className='w-full flex justify-center items-center gap-2'>
-                    <p className='font-semibold text-lg'>{index + 1}. </p>
                     <div className='w-full border-2 border-gray-400/20 p-2 px-4'>
                         <input
                             spellCheck={false}
@@ -44,13 +44,13 @@ function ExamCard({ Questions, setQuestions, handleAddQuestion, handleRemoveQues
                 </div>
 
                 {/* Options */}
-                {['A', 'B', 'C', 'D'].map((opt) => (
+                {['A', 'B', 'C', 'D'].map((opt,index) => (
                     <div key={opt} className='w-full relative'>
                         <div className='w-full border-2 border-gray-400/20 p-2 px-4'>
                             <input
                                 spellCheck={false}
                                 type='text'
-                                value={item.options[opt]}
+                                value={item.options[index]}
                                 onChange={(e) => handleOptionChange(opt, e.target.value)}
                                 placeholder={`Option ${opt}`}
                                 className='w-full outline-none'

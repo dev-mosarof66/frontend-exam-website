@@ -53,7 +53,7 @@ function Login() {
         </div>
 
       </div>
-      <div className='w-full xs:w-[500px]  h-full flex flex-col items-center justify-center absolute md:relative space-y-5'>
+      <div className='w-full   h-full flex flex-col items-center justify-center absolute md:relative space-y-5'>
           <h1 className='font-bold text-3xl w-full text-center text-green-700'>SIGN IN TO YOUR <span className='text-white'>ADVENTURE</span> </h1>
         <div className='w-[90%] bg-[#160430] flex items-center justify-center  animate-fade-right animate-delay-300 space-y-6'>
           <div className='w-full relative z-10 p-4 px-4 xs:px-10'>

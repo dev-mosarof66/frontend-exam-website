@@ -9,7 +9,7 @@ function Home() {
           <div >
             <Sidebar />
           </div>
-          <div className='w-full h-screen  overflow-y-scroll no-scroll'>
+          <div className='w-full h-screen py-6 sm:py-10  overflow-y-scroll no-scroll'>
             <Outlet />
           </div>
 

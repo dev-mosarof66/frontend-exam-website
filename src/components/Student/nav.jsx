@@ -19,7 +19,7 @@ const data = [
         id: 3,
         name: 'Take Exam',
         icon: <FaPenFancy color='white' />,
-        path: '/student/dashboard/exam'
+        path: '/student/exam'
     },
 
     {

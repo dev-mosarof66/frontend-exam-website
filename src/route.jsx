@@ -52,9 +52,9 @@ function Router() {
                         <Route index element={<StudentDashboard />} />
                         <Route path='/student/dashboard/profile' element={<StudentProfile />} />
                         <Route path='/student/dashboard/report' element={<StudentReport />} />
-                        <Route path='/student/dashboard/exam' element={<ParticipateExam />} />
 
                     </Route>
+                    <Route path='/student/exam' element={<ParticipateExam />} />
                 </Routes>
             </Suspense>
         </BrowserRouter>

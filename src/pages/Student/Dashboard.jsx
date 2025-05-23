@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { IoNotifications } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
@@ -8,7 +8,20 @@ import { PastExamCard, RunningExamCard } from '../../components/Student/ExamCard
 import '../../css/public.css'
 
 
-function Dashboard() {
+const Layout = () => {
+    const [started, setStarted] = useState(true)
+
+    return (
+        <div>
+            {
+                started ? <PreExam></PreExam> : <Dashboard setStarted={setStarted} />
+            }
+        </div>
+    )
+}
+
+
+function Dashboard({ setStarted }) {
     const navigate = useNavigate()
     return (
         <div className='w-full sm:w-[90%] md:w-[90%] mx-auto  h-[99vh] overflow-y-scroll pb-24 py-6 sm:py-10 flex flex-col space-y-8'>
@@ -32,7 +45,7 @@ function Dashboard() {
             <div className='w-full md:w-[60%] mx-auto flex flex-col justify-center items-center space-y-10'>
                 <h1 className='text-2xl font-bold text-accent'>Running Exam</h1>
                 <div className='w-full flex flex-col justify-center items-center'>
-                    <RunningExamCard />
+                    <RunningExamCard setStarted={setStarted} />
                 </div>
             </div>
 
@@ -50,4 +63,38 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+const PreExam = ({ data }) => {
+    const navigate = useNavigate()
+    return (
+        <div className='w-full h-[88vh] flex flex-col justify-center items-center '>
+          <div className='w-[80%] flex flex-col justify-center items-center border border-gray-400/50 rounded-lg p-4 space-y-5'>
+              <div className='w-full flex flex-col justify-center items-center' >
+                <div className='w-full flex flex-col justify-center items-center gap-1'>
+                    <h1 className='text-xl font-bold'>Organic Chemistry 01</h1>
+                    <h2 className='text-base font-semibold'>Chemistry 2nd Paper</h2>
+                </div>
+                <div className='w-[80%] flex items-center justify-between'>
+                    <p>Marks: <span className='font-semibold'>30</span></p>
+                    <p>Time: <span>30 min</span></p>
+                </div>
+            </div>
+            <div className='w-full px-2 flex flex-col justify-center items-start space-y-1'>
+                <h1 className='text-lg font-bold text-secondary'>Topics : </h1>
+                <div className='w-full flex flex-col space-y-1 font-semibold'>
+                    <li>Electrophilic Addition Reaction</li>
+                    <li>Electrophilic Substitution Reaction</li>
+                    <li>Nucleophilic Addition Reaction</li>
+                    <li>Nucleophilic Substitution Reaction</li>
+                </div>
+            </div>
+            <div>
+                <button onClick={() => navigate('/student/exam')} className='btn btn-outline btn-accent text-white hover:text-black font-bold '>Start Now</button>
+            </div>
+          </div>
+
+        </div>
+    )
+}
+
+
+export default Layout

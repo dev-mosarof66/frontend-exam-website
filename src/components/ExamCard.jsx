@@ -10,28 +10,29 @@ function ExamCard({ Questions, setQuestions, handleAddQuestion, handleRemoveQues
         setQuestions(updatedQuestions);
     };
 
-    const handleOptionChange = (optionKey, value) => {
-        const updatedQuestions = Questions.map((q) =>
-            q.id === id
-                ? { ...q, options: { ...q.options, [optionKey]: value } }
-                : q
-        );
+    const handleOptionChange = (optIndex, value) => {
+        const updatedQuestions = Questions.map((q) => {
+            if (q.id !== id) return q;
+            const newOptions = [...q.options];
+            newOptions[optIndex] = value;
+            return { ...q, options: newOptions };
+        });
         setQuestions(updatedQuestions);
     };
 
-    //page title change
+    // Set the page title once on mount
     useEffect(() => {
         document.title = `Create Exam | Bee Master`;
-    })
+    }, []);
 
     return (
         <div className='w-[90%] mx-auto flex flex-col items-center gap-4'>
 
-            {/* Title */}
+            {/* Question Title */}
             <div className='w-[90%] flex flex-col space-y-3'>
                 <p className='font-semibold text-lg'>{index + 1}. </p>
                 <div className='w-full flex justify-center items-center gap-2'>
-                    <div className='w-full border-2 border-gray-400/20 p-2 px-4'>
+                    <div className={`w-full border-2 p-2 px-4 border-gray-400/20`}>
                         <input
                             spellCheck={false}
                             type="text"
@@ -44,20 +45,20 @@ function ExamCard({ Questions, setQuestions, handleAddQuestion, handleRemoveQues
                 </div>
 
                 {/* Options */}
-                {['A', 'B', 'C', 'D'].map((opt,index) => (
+                {['A', 'B', 'C', 'D'].map((opt, optIndex) => (
                     <div key={opt} className='w-full relative'>
-                        <div className='w-full border-2 border-gray-400/20 p-2 px-4'>
+                        <div className={`w-full border-2 p-2 px-4 ${item.options[optIndex].trim() === '' ? 'border-gray-400/20' : 'border-gray-400/20'}`}>
                             <input
                                 spellCheck={false}
                                 type='text'
-                                value={item.options[index]}
-                                onChange={(e) => handleOptionChange(opt, e.target.value)}
+                                value={item.options[optIndex]}
+                                onChange={(e) => handleOptionChange(optIndex, e.target.value)}
                                 placeholder={`Option ${opt}`}
                                 className='w-full outline-none'
                             />
                         </div>
 
-                        {/* Show icons only for A and D for layout balance */}
+                        {/* Add / Remove icons */}
                         {opt === 'A' && (
                             <div
                                 onClick={() => handleAddQuestion(id)}
@@ -89,8 +90,9 @@ function ExamCard({ Questions, setQuestions, handleAddQuestion, handleRemoveQues
                 <select
                     value={item.answer}
                     onChange={(e) => handleChange("answer", e.target.value)}
-                    className="select select-bordered w-full max-w-xs outline-none"
+                    className={`select select-bordered w-full max-w-xs outline-none ${item.answer.trim() === '' ? 'border-gray-400' : ''}`}
                 >
+                    <option value="" disabled>Select answer</option>
                     {['A', 'B', 'C', 'D'].map((opt) => (
                         <option key={opt} value={opt}>{opt}</option>
                     ))}

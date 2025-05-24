@@ -3,10 +3,10 @@ import { IoCheckmarkDoneSharp } from "react-icons/io5";
 
 
 
-function QuestionCard({ question, id }) {
+function QuestionCard({ question }) {
     return (
         <div className='w-[100%]   border-2 card border-gray-400/50 space-y-3 rounded-lg p-4'>
-            <h1 className='text-lg sm:text-xl font-bold space-x-1'><span className='text-green-400'>{id}.</span> <span className='font-semibold'>{question.title}</span></h1>
+            <h1 className='text-lg sm:text-xl font-bold space-x-1'><span className='text-green-400'>{question.id}.</span> <span className='font-semibold'>{question.title}</span></h1>
             <div className='grid grid-cols-1  xs:grid-cols-2 gap-2'>
                 {
                     question.options.map((item, index) => (

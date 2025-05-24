@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import ExamCard from '../../components/ExamCard';
 import '../../css/public.css';
-import context from '../../context/context'
+import context from '../../context/context';
 
 function CreateExam() {
   const blankQuestion = (id) => ({
@@ -12,10 +12,11 @@ function CreateExam() {
   });
 
   const [Question, setQuestion] = useState([blankQuestion(1)]);
-  const {setCreatedExam} = useContext(context)
+  const nextId = useRef(2); // Start from 2 since 1 is used
+  const { setCreatedExam } = useContext(context);
 
   const handleAddQuestion = (afterId) => {
-    const newId = Question.length > 0 ? Math.max(...Question.map(q => q.id)) + 1 : 1;
+    const newId = nextId.current++;
     const newQuestion = blankQuestion(newId);
 
     const index = Question.findIndex(q => q.id === afterId);
@@ -34,16 +35,35 @@ function CreateExam() {
   };
 
   const handleSave = () => {
+    const isValid = Question.every(q =>
+      q.title.trim() &&
+      q.options.some(opt => opt.trim()) &&
+      q.answer.trim()
+    );
+
+    if (!isValid) {
+      alert("Please complete all questions before saving.");
+      return;
+    }
+
     console.log("Saved questions:", Question);
-    setCreatedExam(Question)
+    setCreatedExam(Question);
+    localStorage.setItem('createdExam', JSON.stringify(Question));
   };
+
+  // Scroll to bottom on question count change
+  useEffect(() => {
+    const container = document.querySelector('.overflow-y-scroll');
+    container?.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
+  }, [Question.length]);
 
   return (
     <div className='w-full h-[90vh] xs:h-screen flex flex-col items-center py-4 space-y-6 no-scroll'>
 
       <h1 className='text-2xl sm:text-3xl font-bold text-gray-400'>Create Exam</h1>
+
       <div className='w-[90%] h-[90vh] overflow-y-scroll no-scroll lg:w-[70%] mx-auto space-y-6'>
-        {Question.map((item,index) => (
+        {Question.map((item, index) => (
           <ExamCard
             key={item.id}
             Questions={Question}

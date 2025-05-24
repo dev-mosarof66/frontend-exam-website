@@ -9,7 +9,7 @@ import '../../css/public.css'
 
 
 const Layout = () => {
-    const [started, setStarted] = useState(true)
+    const [started, setStarted] = useState(false)
 
     return (
         <div>

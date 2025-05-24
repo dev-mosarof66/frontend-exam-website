@@ -9,7 +9,7 @@ function Popup() {
                 <h1 className='text-2xl text-gray-400'>Select Your Role</h1>
                 <div className='w-full flex flex-col gap-1 list-none'>
                     <li onClick={() => navigate('/teacher/login')} className='w-full items-center flex justify-center hover:bg-gray-500/10 cursor-pointer duration-300 delay-75 py-1 active:bg-gray-500/10 hover:text-red-600 active:text-red-600'>Teacher</li>
-                    <li onClick={() => navigate('/student/login')} className='w-full items-center flex justify-center hover:bg-gray-500/10 cursor-pointer duration-300 delay-75 py-1 active:bg-gray-500/10 hover:text-red-600 active:text-red-600'>Student</li>
+                    <li onClick={() => navigate('/student/dashboard')} className='w-full items-center flex justify-center hover:bg-gray-500/10 cursor-pointer duration-300 delay-75 py-1 active:bg-gray-500/10 hover:text-red-600 active:text-red-600'>Student</li>
                 </div>
             </div>
         </div>
